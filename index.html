@@ -8,7 +8,7 @@ let exampleIndex=-1;
 function showExample(){
  exampleIndex=(exampleIndex+1)%exampleImages.length;
  const img=exampleImages[exampleIndex];
- const render=()=>{resetDisk();dc.save();dc.beginPath();dc.arc(cx,cy,r,0,Math.PI*2);dc.clip();dc.drawImage(img,cx-r,cy-r,r*2,r*2);dc.restore();};
+ const render=()=>{resetDisk();dc.save();dc.beginPath();dc.arc(cx,cy,r,0,Math.PI*2);dc.clip();const centers=[[420,420],[432,422],[428,426],[427,420],[420,420]];const [mx,my]=centers[exampleIndex];const scale=(r*2/840)*1.04;dc.drawImage(img,cx-mx*scale,cy-my*scale,img.naturalWidth*scale,img.naturalHeight*scale);dc.restore();};
  if(img.complete&&img.naturalWidth)render();else img.onload=render;
  document.getElementById('example').textContent='Voorbeelden ('+(exampleIndex+1)+'/5)';
 }
